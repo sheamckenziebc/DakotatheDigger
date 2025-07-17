@@ -1,5 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Collapsing Header on Scroll
+    const header = document.querySelector('header');
+    let lastScrollTop = 0;
+    
+    if (header) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add collapsed class when scrolled down more than 100px
+            if (scrollTop > 100) {
+                header.classList.add('header-collapsed');
+            } else {
+                header.classList.remove('header-collapsed');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    }
+
     // Lightbox Gallery Functionality
     const galleryItems = document.querySelectorAll('.gallery-item img');
     const lightbox = document.getElementById('lightbox');
